@@ -19,7 +19,7 @@ class TopSlider extends StatelessWidget {
               indicatorColor: Colors.blue,
               indicatorBackgroundColor: Colors.grey,
               onPageChanged: (value) {
-                debugPrint('Page changed: $value');
+              
               },
               autoPlayInterval: 3000,
               isLoop: true,

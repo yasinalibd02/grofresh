@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../data/categories_data.dart';
 import '../widget/drawer/drawer_widget.dart';
+
 import '../widget/home_widgets/categories.dart';
 import '../widget/home_widgets/top_slider.dart';
 
@@ -49,32 +51,46 @@ class _homePageState extends State<homePage> {
       drawer: draweWidget(),
       body: ListView(
         children: [
-  //This is Top Slider 
+          //This is Top Slider
           TopSlider(),
 
- 
- 
-  //This is categores Widgets
-         Text("Categories"),
+          //This is categores Widgets
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.black26,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Categories",
+                  ),
+                )),
+          ),
 
-         Container(
-           height: 400,
-           child: GridView.builder(gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 140,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10),
-                itemCount: categorie.length,
-             itemBuilder: (context,index){
-             var data=categorie[index];
-             return CategoriesSingleItem(image: data.image, title: data.text,
-               
-             );
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Container(
+                height: 500,
+                child: GridView.count(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 13,
+                    mainAxisSpacing: 13,
+                    childAspectRatio: 2 / 2,
+                    children: List.generate(
+                        categorie.length,
+                        (index) => CategoriesSingleItem(
+                              image: categorie[index].image,
+                              title: categorie[index].text,
+                            )))),
+          ),
 
-             
-           }),
-         )
-          
+
+         
+
+         
         ],
       ),
     );

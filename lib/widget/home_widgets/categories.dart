@@ -1,6 +1,4 @@
  import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class CategoriesSingleItem extends StatelessWidget {
   final String title;
@@ -10,21 +8,32 @@ class CategoriesSingleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-           height: 200,
+           height: 220,
            width:double.infinity,
            decoration: BoxDecoration(
-             color: Colors.black,
+             color: Colors.black26,
              borderRadius:BorderRadius.circular(10)
 
            ),
            child: Column(
+             crossAxisAlignment: CrossAxisAlignment.center,
              children: [
-               CircleAvatar(
-                 backgroundImage: AssetImage(image),
-                  
+               Padding(
+                 padding: const EdgeInsets.only(top: 12),
+                 child: CircleAvatar(
+                   radius: 25,
+                   
+                   
+                   backgroundImage: AssetImage(image),
+                   
+                    
+                 ),
                ),
 
-               Text(title),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Text(title,style: TextStyle(fontSize: 14),),
+               ),
              ],
            ),
           );
