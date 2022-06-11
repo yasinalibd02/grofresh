@@ -6,6 +6,7 @@ import '../widget/drawer/drawer_widget.dart';
 
 import '../widget/home_widgets/categories.dart';
 import '../widget/home_widgets/daily_needs.dart';
+import '../widget/home_widgets/popular_items.dart';
 import '../widget/home_widgets/top_slider.dart';
 
 class homePage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:AppBar(
         leading: Builder(
             builder: (context) => IconButton(
                 onPressed: () {
@@ -77,6 +78,7 @@ class _homePageState extends State<homePage> {
             child: Container(
                 height: 230,
                 child: GridView.count(
+                    physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 3,
                     crossAxisSpacing: 13,
                     mainAxisSpacing: 13,
@@ -89,8 +91,9 @@ class _homePageState extends State<homePage> {
                             )))),
           ),
 
+//This is start to listView Builder widget
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
             child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
@@ -117,11 +120,9 @@ class _homePageState extends State<homePage> {
           ),
 
           Container(
-            height: 230,
+            height: 207,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                
                 itemCount: dailyneed.length,
                 itemBuilder: (context, index) {
                   return dailyNeeds(
@@ -131,7 +132,42 @@ class _homePageState extends State<homePage> {
                     price: dailyneed[index].price,
                   );
                 }),
-          )
+          ),
+
+          //this is listview.buildder listTile widget
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 8),
+            child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.black26,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "populer Items",
+                  ),
+                )),
+          ),
+
+          Container(
+            height: 600,
+            child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+            
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: dailyneed.length,
+                itemBuilder: (context, index) {
+                  return popular_item(
+                    images: dailyneed[index].images,
+                    title: dailyneed[index].title,
+                    price: dailyneed[index].price,
+                    Weight: dailyneed[index].Weight,
+                  );
+                }),
+          ),
         ],
       ),
     );
