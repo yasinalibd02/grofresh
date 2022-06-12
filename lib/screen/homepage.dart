@@ -8,6 +8,7 @@ import '../widget/home_widgets/categories.dart';
 import '../widget/home_widgets/daily_needs.dart';
 import '../widget/home_widgets/popular_items.dart';
 import '../widget/home_widgets/top_slider.dart';
+import 'single_categories.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -57,7 +58,9 @@ class _homePageState extends State<homePage> {
           //This is Top Slider
           TopSlider(),
 
-          //This is categores Widgets
+
+          
+ //**************      This is categores Widgets     ************88888
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
             child: Container(
@@ -75,20 +78,27 @@ class _homePageState extends State<homePage> {
 
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
-                height: 230,
-                child: GridView.count(
-                    physics: NeverScrollableScrollPhysics(),
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 13,
-                    mainAxisSpacing: 13,
-                    childAspectRatio: 2 / 2,
-                    children: List.generate(
-                        categorie.length,
-                        (index) => CategoriesSingleItem(
-                              image: categorie[index].image,
-                              title: categorie[index].text,
-                            )))),
+            child: InkWell(
+              onTap: (){
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                singleCategories(product: categorie.toString(),)));
+              },
+              child: Container(
+                  height: 230,
+                  child: GridView.count(
+                      physics: NeverScrollableScrollPhysics(),
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 13,
+                      mainAxisSpacing: 13,
+                      childAspectRatio: 2 / 2,
+                      children: List.generate(
+                          categorie.length,
+                          (index) => CategoriesSingleItem(
+                                image: categorie[index].image,
+                                title: categorie[index].text,
+                              )))),
+            ),
           ),
 
 //This is start to listView Builder widget
