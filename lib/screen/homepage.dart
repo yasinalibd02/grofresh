@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:grofresh/models/daily_needs_model.dart';
 
+import '../controller/all_data_product.dart';
 import '../data/categories_data.dart';
 import '../data/daily_needs_data.dart';
-import '../widget/drawer/drawer_widget.dart';
+import '../models/all_products.dart';
+import '../widget/drawer_widget.dart';
 
 import '../widget/home_widgets/categories.dart';
 import '../widget/home_widgets/daily_needs.dart';
@@ -11,6 +14,7 @@ import '../widget/home_widgets/top_slider.dart';
 
 
 class homePage extends StatefulWidget {
+
   const homePage({Key? key}) : super(key: key);
 
   @override
@@ -18,6 +22,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+   List<allProducts> FirstPart = allDataClass().faceData("firstpart");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,25 +159,44 @@ class _homePageState extends State<homePage> {
                 )),
           ),
 
-          Container(
-            height: 600,
-            child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-            
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: dailyneed.length,
-                itemBuilder: (context, index) {
-                  return popular_item(
-                    images: dailyneed[index].images,
-                    title: dailyneed[index].title,
-                    price: dailyneed[index].price,
-                    Weight: dailyneed[index].Weight,
-                  );
-                }),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: dailyneed.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: (){
+
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> details_products(dailyneed[index])
+
+              
+                          
+                          
+                          ));
+                        },
+                        child: popular_item(
+                          images: dailyneed[index].images,
+                          title: dailyneed[index].title,
+                          price: dailyneed[index].price,
+                          Weight: dailyneed[index].Weight,
+                        ),
+                      );
+                    }),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
+}
+
+details_products(dailyNeedsModel dailyneed) {
+  return Text(dailyneed.title);
 }

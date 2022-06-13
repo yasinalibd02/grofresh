@@ -14,9 +14,11 @@ class popular_item extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
     return 
        Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+        padding:  EdgeInsets.only(left: h*0.012, right: 8, bottom: 8),
         child: Container(
             height: 90,
             width: MediaQuery.of(context).size.width,
@@ -47,12 +49,12 @@ class popular_item extends StatelessWidget {
                     children: [
                       Text(title),
                       Text(Weight,
-                          style: TextStyle(fontSize: 12, color: Colors.grey))
+                          style: TextStyle(fontSize: h*0.015, color: Colors.grey))
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 5,
+                  width: w*0.007,
                 ),
                 Expanded(
                   flex: 2,
