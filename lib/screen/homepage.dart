@@ -11,6 +11,7 @@ import '../widget/home_widgets/categories.dart';
 import '../widget/home_widgets/daily_needs.dart';
 import '../widget/home_widgets/popular_items.dart';
 import '../widget/home_widgets/top_slider.dart';
+import 'details_products.dart';
 
 
 class homePage extends StatefulWidget {
@@ -197,6 +198,4 @@ class _homePageState extends State<homePage> {
   }
 }
 
-details_products(dailyNeedsModel dailyneed) {
-  return Text(dailyneed.title);
-}
+

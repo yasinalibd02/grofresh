@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'screen/homepage.dart';
-import 'widget/details_widgets.dart';
 import 'widget/home_widgets/popular_items.dart';
 
 void main(){
@@ -32,7 +31,7 @@ class GroFresh extends StatelessWidget {
     ),
   ),
       debugShowCheckedModeBanner: false,
-      home:detailsProducts() ,
+      home:homePage() ,
       
     );
   }
