@@ -18,7 +18,7 @@ class _CategoriesSingleItemState extends State<CategoriesSingleItem> {
      final DeWi=MediaQuery.of(context).size.width;
 
     return Container(
-           height:DeHi*240,
+           
            width:double.infinity,
            decoration: BoxDecoration(
              color: Colors.black26,
@@ -28,21 +28,25 @@ class _CategoriesSingleItemState extends State<CategoriesSingleItem> {
            child: Column(
              crossAxisAlignment: CrossAxisAlignment.center,
              children: [
-               Padding(
-                 padding: const EdgeInsets.only(top: 10),
-                 child: CircleAvatar(
-                   radius: 24,
-                   
-                   
-                   backgroundImage: AssetImage(widget.image),
-                   
-                    
+               Expanded(
+                 child: Padding(
+                   padding: const EdgeInsets.only(top: 10),
+                   child: CircleAvatar(
+                     radius: 34,
+                     
+                     
+                     backgroundImage: AssetImage(widget.image),
+                     
+                      
+                   ),
                  ),
                ),
 
-               Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Text(widget.title,style: TextStyle(fontSize: 14),),
+               Expanded(
+                 child: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Text(widget.title,style: TextStyle(fontSize: 14),),
+                 ),
                ),
              ],
            ),

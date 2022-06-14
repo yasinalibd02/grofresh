@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:grofresh/models/daily_needs_model.dart';
 
 import '../controller/all_data_product.dart';
@@ -25,7 +26,18 @@ class homePage extends StatefulWidget {
 class _homePageState extends State<homePage> {
    List<allProducts> FirstPart = allDataClass().faceData("firstpart");
   @override
+  dispose(){
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  super.dispose();
+}
   Widget build(BuildContext context) {
+
+    final h=MediaQuery.of(context).size.height;
     return Scaffold(
       appBar:AppBar(
         leading: Builder(
@@ -85,7 +97,7 @@ class _homePageState extends State<homePage> {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Container(
-                height: 230,
+                height: 290,
                 child: GridView.count(
                     physics: NeverScrollableScrollPhysics(),
                     crossAxisCount: 3,
