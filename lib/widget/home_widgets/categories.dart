@@ -1,14 +1,24 @@
  import 'package:flutter/material.dart';
 
-class CategoriesSingleItem extends StatelessWidget {
+class CategoriesSingleItem extends StatefulWidget {
   final String title;
   final String image;
   const CategoriesSingleItem({Key? key ,required this.image,required this.title}) : super(key: key);
 
   @override
+  State<CategoriesSingleItem> createState() => _CategoriesSingleItemState();
+}
+
+class _CategoriesSingleItemState extends State<CategoriesSingleItem> {
+ 
+  @override
   Widget build(BuildContext context) {
+
+     final DeHi=MediaQuery.of(context).size.height;
+     final DeWi=MediaQuery.of(context).size.width;
+
     return Container(
-           height: 220,
+           height:DeHi*240,
            width:double.infinity,
            decoration: BoxDecoration(
              color: Colors.black26,
@@ -19,12 +29,12 @@ class CategoriesSingleItem extends StatelessWidget {
              crossAxisAlignment: CrossAxisAlignment.center,
              children: [
                Padding(
-                 padding: const EdgeInsets.only(top: 12),
+                 padding: const EdgeInsets.only(top: 10),
                  child: CircleAvatar(
-                   radius: 25,
+                   radius: 24,
                    
                    
-                   backgroundImage: AssetImage(image),
+                   backgroundImage: AssetImage(widget.image),
                    
                     
                  ),
@@ -32,7 +42,7 @@ class CategoriesSingleItem extends StatelessWidget {
 
                Padding(
                  padding: const EdgeInsets.all(8.0),
-                 child: Text(title,style: TextStyle(fontSize: 14),),
+                 child: Text(widget.title,style: TextStyle(fontSize: 14),),
                ),
              ],
            ),

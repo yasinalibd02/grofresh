@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:responsive_framework/responsive_framework.dart';
+
 import 'screen/homepage.dart';
-import 'widget/home_widgets/popular_items.dart';
 
 void main(){
   runApp(GroFresh());
@@ -13,6 +14,25 @@ class GroFresh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+
+       builder: (context, child) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, child!),
+          maxWidth: 1200,
+          minWidth: 450,
+          defaultScale: true,
+          breakpoints: [
+            const ResponsiveBreakpoint.resize(450, name: MOBILE),
+            const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+            const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+            const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+          ],
+       ),
+           
+       
+
+
+
        title: "GROFresh",
   theme: ThemeData(
     // Define the default brightness and colors.
